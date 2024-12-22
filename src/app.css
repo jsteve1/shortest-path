@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './lib/styles/grid.css';
+
+@layer base {
+  :root {
+    --grid-cell-size: 25px;
+  }
+}
+
+@layer components {
+  .grid-container {
+    @apply max-w-full overflow-hidden;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .grid-cell {
+    width: var(--grid-cell-size);
+    height: var(--grid-cell-size);
+    @apply border border-gray-200 dark:border-gray-700 transition-colors duration-200;
+  }
+  
+  .grid-cell:focus {
+    @apply outline-none ring-2 ring-primary-500 dark:ring-primary-400 ring-opacity-50;
+  }
+  
+  .grid-cell-start {
+    @apply bg-green-500 dark:bg-green-600 !important;
+  }
+  
+  .grid-cell-end {
+    @apply bg-red-500 dark:bg-red-600 !important;
+  }
+  
+  .grid-cell-wall {
+    @apply bg-gray-800 dark:bg-gray-700 !important;
+  }
+  
+  .grid-cell-path {
+    @apply bg-blue-500 dark:bg-blue-600 !important;
+  }
+  
+  .grid-cell-visited {
+    @apply bg-purple-300 dark:bg-purple-800 !important;
+  }
+}

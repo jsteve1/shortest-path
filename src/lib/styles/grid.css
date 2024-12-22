@@ -1,0 +1,68 @@
+.grid-container {
+  max-width: 100%;
+  overflow: hidden;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.grid-cell {
+  width: var(--grid-cell-size);
+  height: var(--grid-cell-size);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.dark .grid-cell {
+  border-color: #374151;
+  background-color: #1f2937;
+}
+
+.grid-cell-start {
+  background-color: #22c55e !important;
+}
+
+.dark .grid-cell-start {
+  background-color: #16a34a !important;
+}
+
+.grid-cell-end {
+  background-color: #ef4444 !important;
+}
+
+.dark .grid-cell-end {
+  background-color: #dc2626 !important;
+}
+
+.grid-cell-wall {
+  background-color: #1f2937 !important;
+}
+
+.dark .grid-cell-wall {
+  background-color: #4b5563 !important;
+}
+
+.grid-cell-path {
+  background-color: #0ea5e9 !important;
+}
+
+.dark .grid-cell-path {
+  background-color: #0284c7 !important;
+}
+
+.grid-cell-visited {
+  background-color: #d8b4fe !important;
+}
+
+.dark .grid-cell-visited {
+  background-color: #6b21a8 !important;
+}
+
+.grid-cell:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0ea5e9;
+}
+
+.dark .grid-cell:focus {
+  box-shadow: 0 0 0 2px #0284c7;
+} 
