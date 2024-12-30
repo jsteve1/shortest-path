@@ -17,23 +17,41 @@
 
   function updateMaxGridSize() {
     const container = document.querySelector('.controls-container');
-    const containerWidth = container ? container.clientWidth - 32 : Math.min(window.innerWidth - 64, 1168); // 1200 - 32px padding
+    const containerWidth = container ? container.clientWidth - 32 : Math.min(window.innerWidth - 64, 1168);
+    const containerHeight = window.innerHeight - 400;
     const minCellSize = 20;
-    const maxCols = Math.floor(containerWidth / minCellSize);
-    const maxRows = Math.floor((window.innerHeight - 400) / minCellSize);
+    
+    maxCols = Math.floor(containerWidth / minCellSize);
+    maxRows = Math.floor(containerHeight / minCellSize);
 
-    if (gridSize.cols > maxCols || gridSize.rows > maxRows) {
-      gridSize.cols = Math.min(gridSize.cols, maxCols);
-      gridSize.rows = Math.min(gridSize.rows, maxRows);
+    const newCols = Math.min(Math.max(5, gridSize.cols), maxCols);
+    const newRows = Math.min(Math.max(5, gridSize.rows), maxRows);
+    
+    if (newCols !== gridSize.cols || newRows !== gridSize.rows) {
+      gridSize = { rows: newRows, cols: newCols };
       updateGridSize();
     }
   }
 
   function updateGridSize() {
     if (!$pathfindingStore.isRunning) {
-      gridSize.rows = Math.min(Math.max(5, gridSize.rows), maxRows);
-      gridSize.cols = Math.min(Math.max(5, gridSize.cols), maxCols);
-      pathfindingStore.initializeGrid(gridSize.rows, gridSize.cols);
+      const newRows = Math.min(Math.max(5, gridSize.rows), maxRows);
+      const newCols = Math.min(Math.max(5, gridSize.cols), maxCols);
+      
+      if (newRows !== $pathfindingStore.gridSize.rows || newCols !== $pathfindingStore.gridSize.cols) {
+        gridSize = { rows: newRows, cols: newCols };
+        pathfindingStore.initializeGrid(newRows, newCols);
+        
+        const container = document.querySelector('.controls-container');
+        const containerWidth = container ? container.clientWidth - 32 : Math.min(window.innerWidth - 64, 1168);
+        const containerHeight = window.innerHeight - 400;
+        
+        const cellWidth = Math.floor((containerWidth - 2) / newCols);
+        const cellHeight = Math.floor((containerHeight - 2) / newRows);
+        const cellSize = Math.min(cellWidth, cellHeight);
+        
+        document.documentElement.style.setProperty('--grid-cell-size', `${cellSize}px`);
+      }
     }
   }
 

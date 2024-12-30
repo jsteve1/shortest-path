@@ -32,7 +32,7 @@
             {/if}
           </button>
           <a
-            href="https://github.com/your-username/shortestpath"
+            href="https://github.com/jsteve1/shortestpath"
             target="_blank"
             rel="noopener noreferrer"
             class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"

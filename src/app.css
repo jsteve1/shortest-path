@@ -1,8 +1,8 @@
+@import './lib/styles/grid.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './lib/styles/grid.css';
 
 @layer base {
   :root {
